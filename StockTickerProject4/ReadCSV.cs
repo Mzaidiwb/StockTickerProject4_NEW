@@ -9,25 +9,136 @@ namespace StockTickerProject4
 {
     public class ReadCSV
     {
-        public List<String> MSFT_Price()
+        public List<string> MSFT_Price()
         {
-            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\MSFT.csv"))
+            
+            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\MSFT.csv"))
             {
+                reader.ReadLine();
                 List<string> listB = new List<string>();
                 while (!reader.EndOfStream)
                 {
+
                     var line = reader.ReadLine();
                     var values = line.Split(',');
                     listB.Add(values[1]); //stock open
-                   
+                    
+
                 }
+                
                 return listB;
             }
         }
-        public List<String> MSFT_Dates()
+        public List<string> FB_Price()
         {
-            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\MSFT.csv"))
+            //MSFT
+            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\FB.csv"))
             {
+                reader.ReadLine();
+                List<string> listB = new List<string>();
+                while (!reader.EndOfStream)
+                {
+
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    listB.Add(values[1]); //stock open
+
+
+                }
+
+                return listB;
+            }
+        }
+
+        public List<string> VOO_Price()
+        {
+            //MSFT
+            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\VOO.csv"))
+            {
+                reader.ReadLine();
+                List<string> listB = new List<string>();
+                while (!reader.EndOfStream)
+                {
+
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    listB.Add(values[1]); //stock open
+
+
+                }
+
+                return listB;
+            }
+        }
+
+        public List<string> F_Price()
+        {
+            //MSFT
+            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\F.csv"))
+            {
+                reader.ReadLine();
+                List<string> listB = new List<string>();
+                while (!reader.EndOfStream)
+                {
+
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    listB.Add(values[1]); //stock open
+
+
+                }
+
+                return listB;
+            }
+        }
+
+        public List<string> DIS_Price()
+        {
+            //MSFT
+            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\DIS.csv"))
+            {
+                reader.ReadLine();
+                List<string> listB = new List<string>();
+                while (!reader.EndOfStream)
+                {
+
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    listB.Add(values[1]); //stock open
+
+
+                }
+
+                return listB;
+            }
+        }
+
+        public List<string> KO_Price()
+        {
+            //MSFT
+            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\KO.csv"))
+            {
+                reader.ReadLine();
+                List<string> listB = new List<string>();
+                while (!reader.EndOfStream)
+                {
+
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    listB.Add(values[1]); //stock open
+
+
+                }
+
+                return listB;
+            }
+        }
+        public List<String> MSFT_Dates() //This is only reading MSFT dates which will be the same for all stocks
+                                         //No need to add date reading for other stocks
+        {
+            using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\MSFT.csv"))
+            {
+                reader.ReadLine();
                 List<string> listA = new List<string>();
                 while (!reader.EndOfStream)
                 {
