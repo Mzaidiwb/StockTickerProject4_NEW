@@ -31,7 +31,7 @@ namespace StockTickerProject4
         }
         public List<string> FB_Price()
         {
-            //MSFT
+            //FB
             using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\FB.csv"))
             {
                 reader.ReadLine();
@@ -52,7 +52,7 @@ namespace StockTickerProject4
 
         public List<string> VOO_Price()
         {
-            //MSFT
+            //VOO
             using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\VOO.csv"))
             {
                 reader.ReadLine();
@@ -73,7 +73,7 @@ namespace StockTickerProject4
 
         public List<string> F_Price()
         {
-            //MSFT
+            //Ford
             using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\F.csv"))
             {
                 reader.ReadLine();
@@ -94,7 +94,7 @@ namespace StockTickerProject4
 
         public List<string> DIS_Price()
         {
-            //MSFT
+            //Disney
             using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\DIS.csv"))
             {
                 reader.ReadLine();
@@ -115,7 +115,7 @@ namespace StockTickerProject4
 
         public List<string> KO_Price()
         {
-            //MSFT
+            //Coke
             using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\KO.csv"))
             {
                 reader.ReadLine();
@@ -133,7 +133,7 @@ namespace StockTickerProject4
                 return listB;
             }
         }
-        public List<String> MSFT_Dates() //This is only reading MSFT dates which will be the same for all stocks
+        public List<String> Stock_Dates() //This is only reading MSFT dates which will be the same for all stocks
                                          //No need to add date reading for other stocks
         {
             using (var reader = new StreamReader(@"C:\Users\Mohammad\Downloads\Stocks\MSFT.csv"))
