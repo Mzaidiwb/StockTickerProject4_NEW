@@ -25,13 +25,58 @@ namespace StockTickerProject4
             chart4.ChartAreas[0].AxisY.IsStartedFromZero = false;
             chart5.ChartAreas[0].AxisY.IsStartedFromZero = false;
             chart6.ChartAreas[0].AxisY.IsStartedFromZero = false;
+
+
+
+            chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart1.ChartAreas[0].CursorX.AutoScroll = true;
+            chart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+
+            chart2.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart2.ChartAreas[0].CursorX.AutoScroll = true;
+            chart2.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+
+            chart2.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart2.ChartAreas[0].CursorX.AutoScroll = true;
+            chart2.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+
+            chart3.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart3.ChartAreas[0].CursorX.AutoScroll = true;
+            chart3.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+
+            chart4.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart4.ChartAreas[0].CursorX.AutoScroll = true;
+            chart4.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+
+            chart5.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart5.ChartAreas[0].CursorX.AutoScroll = true;
+            chart5.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+
+            chart6.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart6.ChartAreas[0].CursorX.AutoScroll = true;
+            chart6.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
         }
 
 
-        public async void timer1_Tick(object sender, EventArgs e)
+        public  void timer1_Tick(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].RecalculateAxesScale();
+            chart2.ChartAreas[0].RecalculateAxesScale();
+            chart3.ChartAreas[0].RecalculateAxesScale();
+            chart4.ChartAreas[0].RecalculateAxesScale();
+            chart5.ChartAreas[0].RecalculateAxesScale();
+            chart6.ChartAreas[0].RecalculateAxesScale();
+            //if (chart1.Series[0].Points.Count > 20)
+            //{
+            //    chart1.Series[0].Points.RemoveAt(0);
+            //}
+
+        }
+
+        private async void GraphCharts()
         {
             List<string> MSFT2 = Program.CSV.MSFT_Dates(); //dates for all stocks (5 years from april 5 2021)
-            
+
             //instantiate strings from ReadCSV class
             List<string> MSFT1 = Program.CSV.MSFT_Price();
             List<string> FB1 = Program.CSV.FB_Price();
@@ -52,37 +97,15 @@ namespace StockTickerProject4
             {
 
                 chart1.Series[0].Points.AddXY(MSFT2[i], MS_PRICE[i]);
-                if (chart1.Series[0].Points.Count > 20)
-                    chart1.Series[0].Points.RemoveAt(0);
-                chart1.ChartAreas[0].RecalculateAxesScale();
-
                 chart2.Series[0].Points.AddXY(MSFT2[i], FB_Price[i]);
-                if (chart2.Series[0].Points.Count > 20)
-                    chart2.Series[0].Points.RemoveAt(0);
-                chart2.ChartAreas[0].RecalculateAxesScale();
-
                 chart3.Series[0].Points.AddXY(MSFT2[i], VOO_Price[i]);
-                if (chart3.Series[0].Points.Count > 20)
-                    chart3.Series[0].Points.RemoveAt(0);
-                chart3.ChartAreas[0].RecalculateAxesScale();
-
                 chart4.Series[0].Points.AddXY(MSFT2[i], F_Price[i]);
-                if (chart4.Series[0].Points.Count > 20)
-                    chart4.Series[0].Points.RemoveAt(0);
-                chart4.ChartAreas[0].RecalculateAxesScale();
-
                 chart5.Series[0].Points.AddXY(MSFT2[i], DIS_Price[i]);
-                if (chart5.Series[0].Points.Count > 20)
-                    chart5.Series[0].Points.RemoveAt(0);
-                chart5.ChartAreas[0].RecalculateAxesScale();
-
                 chart6.Series[0].Points.AddXY(MSFT2[i], KO_Price[i]);
-                if (chart6.Series[0].Points.Count > 20)
-                    chart6.Series[0].Points.RemoveAt(0);
-                chart6.ChartAreas[0].RecalculateAxesScale();
 
-                await Task.Delay(1000);
+                await Task.Delay(100);
             }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -91,13 +114,14 @@ namespace StockTickerProject4
         }
         public void Form1_Load(object sender, EventArgs e)
         {
-            timer1.Tick += timer1_Tick;
+            //timer1.Tick += timer1_Tick;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             timer1.Start();
-            timer1.Interval = 500;
+            timer1.Interval = 1000;
+            GraphCharts();
 
         }
 
@@ -106,5 +130,14 @@ namespace StockTickerProject4
             timer1.Stop();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            chart1.Series.SuspendUpdates();
+            chart2.Series.SuspendUpdates();
+            chart3.Series.SuspendUpdates();
+            chart4.Series.SuspendUpdates();
+            chart5.Series.SuspendUpdates();
+            chart6.Series.SuspendUpdates();
+        }
     }
 }
